@@ -41,8 +41,18 @@ export default function ConcordiumContract(props: {
 									element={entrypointUi[entrypoint]({ contract })}
 								/>
 							))}
-							<Route path="" element={<Typography variant="h3">Select an Entrypoint</Typography>} />
-							<Route path="*" element={<Typography variant="h3">Unknown Entrypoint</Typography>} />
+							<Route
+								path=""
+								element={
+									<Typography variant="h3">Select an Entrypoint</Typography>
+								}
+							/>
+							<Route
+								path="*"
+								element={
+									<Typography variant="h3">Unknown Entrypoint</Typography>
+								}
+							/>
 						</Routes>
 					</Paper>
 				</Grid>

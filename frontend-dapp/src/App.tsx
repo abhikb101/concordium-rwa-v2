@@ -8,42 +8,38 @@ import { Box } from "@mui/material";
 import ContractsPage from "./components/contracts/ContractsPage";
 import ConcordiumWalletProvider from "./components/WalletProvider";
 import ConcordiumNodeClientProvider from "./components/NodeClientProvider";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { themeOptions } from "./config/theme";
-import "./App.css"
-
+import "./App.css";
 
 // Main layout component
 function Layout() {
-
 	const theme = createTheme(themeOptions);
 
 	return (
-			<ConcordiumNodeClientProvider>
+		<ConcordiumNodeClientProvider>
 			<ConcordiumWalletProvider>
-				<ThemeProvider theme={theme}>				
+				<ThemeProvider theme={theme}>
 					<Router>
-					<Box
-						sx={{
-							display: "flex",
-							flexDirection: "column",
-							height: "100%",
-							width: "100%",
-							boxSizing: "border-box",
-						}}
-					>
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "column",
+								height: "100%",
+								width: "100%",
+								boxSizing: "border-box",
+							}}
+						>
 							<Routes>
 								<Route path="contracts/*" Component={ContractsPage} />
 								<Route path="*" element={<Navigate to="contracts" replace />} />
 							</Routes>
-					</Box>
-
-				</Router>
+						</Box>
+					</Router>
 				</ThemeProvider>
 			</ConcordiumWalletProvider>
 		</ConcordiumNodeClientProvider>
 	);
 }
-
 
 export default Layout;

@@ -1,6 +1,5 @@
 import {
 	AppBar,
-	Icon,
 	IconButton,
 	ListItemIcon,
 	Menu,
@@ -9,7 +8,7 @@ import {
 	Toolbar,
 	Typography,
 } from "@mui/material";
-import { Box, useTheme } from '@mui/material';
+import { Box, useTheme } from "@mui/material";
 
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Contract } from "./ContractTypes";
@@ -30,17 +29,10 @@ import {
 	ContractAddress,
 	EntrypointName,
 } from "@concordium/web-sdk";
-import {
-	HomeRounded,
-	Login,
-	Logout,
-	Error,
-	ArrowDownward,
-} from "@mui/icons-material";
-import { grey } from "@mui/material/colors";
+import { Login, Logout, Error, ArrowDownward } from "@mui/icons-material";
 import InfoDisplay from "../common/InfoDisplay";
 import { RegistryWidgetsType, UiSchema } from "@rjsf/utils";
-import logo from '../../assets/logo.svg'; // Correctly import the logo using Vite
+import logo from "../../assets/logo.svg"; // Correctly import the logo using Vite
 
 const ContractsAppBar = (props: {
 	onLogin: (account: AccountAddress.Type, wallet: WalletApi) => void;
@@ -108,11 +100,7 @@ const ContractsAppBar = (props: {
 		<AppBar position="static">
 			<Toolbar>
 				<IconButton onClick={() => navigate("")}>
-					<img
-						src={logo}
-						alt="Logo"
-						style={{ height: 30 }}
-					/>
+					<img src={logo} alt="Logo" style={{ height: 30 }} />
 				</IconButton>
 				<Typography fontSize={30} component="div" sx={{ flexGrow: 1 }}>
 					{uiCustomizations.headerTitle}
@@ -152,7 +140,8 @@ const ContractsAppBar = (props: {
 							style={{ fontSize: 12 }}
 							title={account!.address}
 						>
-							{`${account!.address.slice(0, 7)}...`} <ArrowDownward style={{ marginLeft: 4, width: 12 }} />
+							{`${account!.address.slice(0, 7)}...`}{" "}
+							<ArrowDownward style={{ marginLeft: 4, width: 12 }} />
 						</IconButton>
 						<Menu
 							id="menu-appbar"
@@ -271,8 +260,6 @@ function Footer() {
 	);
 }
 
-
-
 const ConnectedContent = () => {
 	const contractFiles = import.meta.glob([`../../lib/generated/*.ts`]);
 	const [contractsState, setContractsState] = useState<
@@ -338,7 +325,7 @@ const ConnectedContent = () => {
 	};
 
 	return (
-		<Paper variant="outlined" >
+		<Paper variant="outlined">
 			<Routes>
 				<Route
 					path=""
@@ -357,7 +344,7 @@ const ConnectedContent = () => {
 						key={contractType}
 						element={
 							contractsState[contractType]?.clientModule &&
-								contractsState[contractType]?.uiModule ? (
+							contractsState[contractType]?.uiModule ? (
 								<ContractType
 									key={contractType}
 									contractType={contractType}
@@ -410,22 +397,23 @@ export default function ContractsPage() {
 	const theme = useTheme();
 
 	return (
-		<Box sx={{
-
-			flexGrow: 1, // allows this section to grow and fill space
-			backgroundColor: theme.palette.background.default, // applies background color from theme
-			display: 'flex',
-			flexDirection: 'column',
-			minHeight: "100%"
-		}}>
+		<Box
+			sx={{
+				flexGrow: 1, // allows this section to grow and fill space
+				backgroundColor: theme.palette.background.default, // applies background color from theme
+				display: "flex",
+				flexDirection: "column",
+				minHeight: "100%",
+			}}
+		>
 			<ContractsAppBar
 				onLogin={(account, wallet) => setWallet({ account, wallet })}
 				onLogout={onLogout}
 			/>
 			<Box
 				sx={{
-					display: 'flex',
-					flexDirection: 'column',
+					display: "flex",
+					flexDirection: "column",
 				}}
 			>
 				<Box
@@ -433,8 +421,8 @@ export default function ContractsPage() {
 						padding: 2, // equivalent to padding: 20px
 						flexGrow: 1, // allows this section to grow and fill space
 						backgroundColor: theme.palette.background.default, // applies background color from theme
-						display: 'flex',
-						flexDirection: 'column',
+						display: "flex",
+						flexDirection: "column",
 					}}
 				>
 					{isLoggedIn ? <ConnectedContent /> : <DisconnectedContent />}

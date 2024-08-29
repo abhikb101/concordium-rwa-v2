@@ -52,8 +52,16 @@ export default function ContractLayout(props: { contracts: Contract[] }) {
 					<Outlet context={contract} />
 				</Grid>
 				<Grid item xs={0} md={4}>
-					<Box sx={{ py: 3, width: '90%' }}>
-						<Paper sx={{ p: 2, mb: 2, overflow: 'hidden', textOverflow: 'ellipsis', wordWrap: 'break-word' }}>
+					<Box sx={{ py: 3, width: "90%" }}>
+						<Paper
+							sx={{
+								p: 2,
+								mb: 2,
+								overflow: "hidden",
+								textOverflow: "ellipsis",
+								wordWrap: "break-word",
+							}}
+						>
 							<Typography variant="h4" fontSize={18} gutterBottom>
 								On Chain Information
 							</Typography>
@@ -61,7 +69,9 @@ export default function ContractLayout(props: { contracts: Contract[] }) {
 								<>
 									<Typography variant="body1" gutterBottom>
 										Module Ref:
-										<CCDScanModuleLink moduleRef={onChainInfo?.sourceModule.moduleRef} />
+										<CCDScanModuleLink
+											moduleRef={onChainInfo?.sourceModule.moduleRef}
+										/>
 									</Typography>
 									<Typography variant="body1" gutterBottom>
 										Name:
@@ -79,7 +89,15 @@ export default function ContractLayout(props: { contracts: Contract[] }) {
 							)}
 						</Paper>
 
-						<Paper sx={{ p: 2, mb: 2, overflow: 'hidden', textOverflow: 'ellipsis', wordWrap: 'break-word' }}>
+						<Paper
+							sx={{
+								p: 2,
+								mb: 2,
+								overflow: "hidden",
+								textOverflow: "ellipsis",
+								wordWrap: "break-word",
+							}}
+						>
 							<Typography variant="h4" fontSize={18} gutterBottom>
 								Module Actions
 							</Typography>
@@ -95,7 +113,6 @@ export default function ContractLayout(props: { contracts: Contract[] }) {
 						</Paper>
 					</Box>
 				</Grid>
-
 			</Grid>
 		</Stack>
 	);

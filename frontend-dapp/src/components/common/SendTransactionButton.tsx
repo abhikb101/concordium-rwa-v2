@@ -12,13 +12,7 @@ import {
 } from "@concordium/web-sdk";
 import { useEffect, useState } from "react";
 import { useNodeClient } from "../NodeClientProvider";
-import {
-	Button,
-	ButtonGroup,
-	CircularProgress,
-	IconButton,
-	Typography,
-} from "@mui/material";
+import { Button, ButtonGroup, CircularProgress } from "@mui/material";
 import { CheckCircle, Error as ErrorIcon } from "@mui/icons-material";
 import CCDScanTransactionLink from "./concordium/CCDScanTransactionLink";
 
@@ -192,14 +186,14 @@ export default function SendTransactionButton(
 	const SentLarge = () => {
 		return (
 			<ButtonGroup fullWidth>
-				<Button variant="contained" disabled endIcon={
-					state.error ? <ErrorIcon /> : <CircularProgress size={10} />
-
-				}>
+				<Button
+					variant="contained"
+					disabled
+					endIcon={state.error ? <ErrorIcon /> : <CircularProgress size={10} />}
+				>
 					Transaction {state.status!}
 				</Button>
 				<CCDScanTransactionLink transactionHash={state.txnHash!} />
-
 			</ButtonGroup>
 		);
 	};
@@ -219,15 +213,16 @@ export default function SendTransactionButton(
 	const FinalizedLarge = () => {
 		return (
 			<ButtonGroup fullWidth color={state.error ? "error" : "success"}>
-				<Button variant="contained" color="success" onClick={onDone} endIcon={
-					state.error ?
-						<ErrorIcon /> :
-						<CheckCircle />
-				}>
+				<Button
+					variant="contained"
+					color="success"
+					onClick={onDone}
+					endIcon={state.error ? <ErrorIcon /> : <CheckCircle />}
+				>
 					Transaction {state.status!}
 				</Button>
 				<CCDScanTransactionLink transactionHash={state.txnHash!} />
-			</ButtonGroup >
+			</ButtonGroup>
 		);
 	};
 
